@@ -42,6 +42,12 @@
             border: 1px solid rgba(212, 175, 55, 0.4);
             box-shadow: 0 25px 50px -12px rgba(19, 42, 29, 0.12);
         }
+        .hero-welcome-box {
+            background: rgba(19, 42, 29, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
         .gold-border-frame {
             border: 1px solid rgba(212, 175, 55, 0.5);
             position: relative;
@@ -79,9 +85,13 @@
 </head>
 <body class="bg-silkCream text-gray-900 antialiased selection:bg-templeGold selection:text-white">
 
-    <!-- Hidden YouTube Background Stream (Starts at 1:01 / 61s) -->
-    <div style="display:none;">
-        <iframe width="0" height="0" src="https://www.youtube.com/embed/8csHQmIadvY?autoplay=1&loop=1&playlist=8csHQmIadvY&start=61" allow="autoplay"></iframe>
+    <!-- Floating Play Music Button (Guarantees clean music without YouTube ads) -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://youtu.be/8csHQmIadvY?t=60" target="_blank" rel="noopener noreferrer" 
+           class="flex items-center gap-2.5 bg-royalGreen text-templeGold px-5 py-3 rounded-full shadow-2xl border border-templeGold/50 text-xs font-semibold hover:bg-templeGold hover:text-white transition duration-300">
+            <i class="fa-solid fa-music animate-pulse"></i>
+            <span class="uppercase tracking-widest text-[10px]">Play Music 🎶</span>
+        </a>
     </div>
 
     <!-- Floating Jasmine/Gold Petals -->
@@ -121,22 +131,25 @@
             <div class="absolute inset-0 bg-gradient-to-t from-royalGreen/95 via-royalGreen/50 to-black/30"></div>
 
             <div class="relative z-20 max-w-3xl mx-auto text-center text-white space-y-6 px-4">
-                <p class="font-telugu text-templeGold text-lg sm:text-2xl tracking-widest drop-shadow">
-                    శ్రీరస్తు · శుభమస్తు · అవిఘ్నమస్తు
-                </p>
-
+                
                 <h1 class="font-editorial text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none drop-shadow-lg text-silkCream">
                     Geetha <span class="font-light italic text-templeGold">&</span> Pavan
                 </h1>
 
                 <div class="w-28 h-px bg-templeGold mx-auto opacity-90"></div>
 
-                <p class="font-editorial italic text-xl sm:text-2xl text-warmSand max-w-xl mx-auto leading-relaxed drop-shadow">
-                    "With the divine blessings of our families, we invite you to celebrate our sacred union and joy."
-                </p>
+                <!-- Beautiful Royal Card Banner for Welcome Message -->
+                <div class="hero-welcome-box rounded-2xl p-6 sm:p-8 max-w-2xl mx-auto shadow-2xl">
+                    <p class="font-telugu text-templeGold text-base sm:text-xl tracking-widest mb-3">
+                        Srirastu · Subhamastu · Avighnamastu
+                    </p>
+                    <p class="font-editorial italic text-lg sm:text-2xl text-silkCream leading-relaxed font-light">
+                        We are overjoyed to celebrate our wedding with all of you. Welcome to our special celebration—we can’t wait to create unforgettable memories together!
+                    </p>
+                </div>
 
-                <div class="pt-4">
-                    <span class="inline-block bg-royalGreen/60 backdrop-blur-md text-silkCream text-xs uppercase tracking-[0.3em] px-8 py-3 rounded-full border border-templeGold/50 shadow-xl">
+                <div class="pt-2">
+                    <span class="inline-block bg-royalGreen/80 backdrop-blur-md text-silkCream text-xs uppercase tracking-[0.3em] px-8 py-3 rounded-full border border-templeGold/50 shadow-xl">
                         November 20, 2026 · Tampa, Florida
                     </span>
                 </div>
@@ -267,8 +280,7 @@
 
     <!-- Clean Royal Footer -->
     <footer class="py-16 bg-royalGreen text-center text-gray-300 text-xs border-t border-templeGold/40 px-4 relative z-20">
-        <p class="font-editorial italic text-3xl sm:text-4xl text-templeGold mb-2">We’re getting married! 💍</p>
-        <p class="text-silkCream text-sm tracking-wide mb-6">Geetha & Pavan · November 20, 2026 · Tampa, Florida</p>
+        <p class="font-editorial italic text-3xl sm:text-4xl text-templeGold mb-4">We’re getting married! 💍</p>
         <div class="w-24 h-px bg-templeGold/40 mx-auto mb-6"></div>
         <p class="text-gray-300 text-[11px] uppercase tracking-[0.3em]">We look forward to celebrating with you! 💛</p>
     </footer>
