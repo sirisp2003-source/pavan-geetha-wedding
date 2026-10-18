@@ -67,9 +67,53 @@
             z-index: 30;
             animation: fall linear infinite;
         }
+        /* Glowing Diya Pulse Animation */
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6)); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.9)); }
+        }
+        .diya-glow {
+            animation: pulse-glow 3s infinite ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-silkCream text-gray-900 antialiased selection:bg-templeGold selection:text-white">
+
+    <!-- Hidden YouTube Audio Player (Starts at 1:00) -->
+    <div id="audio-container" style="display:none;">
+        <iframe id="bg-audio" width="0" height="0" src="https://www.youtube.com/embed/8csHQmIadvY?enablejsapi=1&autoplay=1&loop=1&playlist=8csHQmIadvY&start=60" allow="autoplay"></iframe>
+    </div>
+
+    <!-- Floating Music Toggle Widget -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button onclick="toggleAudio()" id="music-btn" class="flex items-center gap-2 bg-royalGreen text-templeGold px-4 py-3 rounded-full shadow-2xl border border-templeGold/50 text-xs font-medium hover:bg-templeGold hover:text-white transition duration-300">
+            <i id="music-icon" class="fa-solid fa-music animate-spin"></i>
+            <span id="music-text" class="uppercase tracking-widest text-[10px]">Music: Playing</span>
+        </button>
+    </div>
+
+    <script>
+        let isPlaying = true;
+        function toggleAudio() {
+            const iframe = document.getElementById('bg-audio');
+            const icon = document.getElementById('music-icon');
+            const text = document.getElementById('music-text');
+            
+            // Toggle iframe play state via postMessage to YouTube API
+            const playerCommand = isPlaying ? '{"event":"command","func":"pauseVideo","args":""}' : '{"event":"command","func":"playVideo","args":""}';
+            iframe.contentWindow.postMessage(playerCommand, '*');
+
+            if (isPlaying) {
+                icon.className = "fa-solid fa-volume-xmark";
+                text.innerText = "Music: Off";
+                isPlaying = false;
+            } else {
+                icon.className = "fa-solid fa-music animate-spin";
+                text.innerText = "Music: Playing";
+                isPlaying = true;
+            }
+        }
+    </script>
 
     <!-- Floating Jasmine/Gold Petals -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -127,7 +171,7 @@
         </div>
     </section>
 
-    <!-- Sumuhurtham Section -->
+    <!-- Sumuhurtham Section (With Animated Diya & Glowing Gold Accents) -->
     <section id="muhurtham" class="py-28 max-w-3xl mx-auto px-4">
         <div class="text-center space-y-3 mb-12">
             <span class="font-telugu text-templeGold text-xl tracking-widest">ముహూర్తం</span>
@@ -136,6 +180,13 @@
         </div>
 
         <div class="royal-card rounded-3xl p-8 sm:p-14 text-center space-y-8 gold-border-frame">
+            <!-- Animated Glowing Diya / Temple Lamp Icon -->
+            <div class="flex justify-center">
+                <div class="w-16 h-16 rounded-full bg-warmSand border border-templeGold/40 flex items-center justify-center diya-glow shadow-md">
+                    <i class="fa-solid fa-fire text-templeGold text-2xl"></i>
+                </div>
+            </div>
+
             <span class="inline-block px-5 py-1.5 bg-warmSand text-royalGreen text-[11px] uppercase tracking-[0.25em] rounded-full font-semibold border border-templeGold/30">
                 Auspicious Wedding Ceremony
             </span>
@@ -151,7 +202,7 @@
                 </div>
                 <div class="p-6 rounded-2xl bg-warmSand/70 border border-templeGold/20">
                     <p class="font-semibold text-royalGreen uppercase tracking-widest mb-1 text-[11px]">⏰ Auspicious Time</p>
-                    <p class="font-editorial text-xl text-amber-800 font-bold mt-1">8:00 PM Onwards</p>
+                    <p class="font-editorial text-xl text-amber-800 font-bold mt-1">8:00 PM</p>
                 </div>
             </div>
         </div>
