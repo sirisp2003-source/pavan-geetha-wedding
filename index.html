@@ -42,12 +42,6 @@
             border: 1px solid rgba(212, 175, 55, 0.4);
             box-shadow: 0 25px 50px -12px rgba(19, 42, 29, 0.12);
         }
-        .hero-welcome-box {
-            background: rgba(19, 42, 29, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-        }
         .gold-border-frame {
             border: 1px solid rgba(212, 175, 55, 0.5);
             position: relative;
@@ -85,13 +79,60 @@
 </head>
 <body class="bg-silkCream text-gray-900 antialiased selection:bg-templeGold selection:text-white">
 
-    <!-- Floating Play Music Button (Guarantees clean music without YouTube ads) -->
+    <!-- Embedded YouTube Player Container for In-Page Audio -->
+    <div id="player-container" class="hidden"></div>
+
+    <script>
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player-container', {
+                height: '0',
+                width: '0',
+                videoId: '8csHQmIadvY',
+                playerVars: {
+                    'start': 60,
+                    'autoplay': 0,
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': '8csHQmIadvY'
+                }
+            });
+        }
+
+        var isPlaying = false;
+        function togglePlayMusic() {
+            var btnText = document.getElementById('music-text');
+            var btnIcon = document.getElementById('music-icon');
+            
+            if (!player) return;
+
+            if (!isPlaying) {
+                player.playVideo();
+                btnText.innerText = "Music: Playing 🎶";
+                btnIcon.className = "fa-solid fa-pause animate-pulse";
+                isPlaying = true;
+            } else {
+                player.pauseVideo();
+                btnText.innerText = "Play Music 🎶";
+                btnIcon.className = "fa-solid fa-music";
+                isPlaying = false;
+            }
+        }
+
+        // Load YouTube Iframe API asynchronously
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
+
+    <!-- Floating Play Music Button (Plays audio inside page) -->
     <div class="fixed bottom-6 right-6 z-50">
-        <a href="https://youtu.be/8csHQmIadvY?t=60" target="_blank" rel="noopener noreferrer" 
+        <button onclick="togglePlayMusic()" 
            class="flex items-center gap-2.5 bg-royalGreen text-templeGold px-5 py-3 rounded-full shadow-2xl border border-templeGold/50 text-xs font-semibold hover:bg-templeGold hover:text-white transition duration-300">
-            <i class="fa-solid fa-music animate-pulse"></i>
-            <span class="uppercase tracking-widest text-[10px]">Play Music 🎶</span>
-        </a>
+            <i id="music-icon" class="fa-solid fa-music"></i>
+            <span id="music-text" class="uppercase tracking-widest text-[10px]">Play Music 🎶</span>
+        </button>
     </div>
 
     <!-- Floating Jasmine/Gold Petals -->
@@ -123,33 +164,31 @@
     <!-- Main Content Wrapper -->
     <main class="relative">
 
-        <!-- Hero Section -->
+        <!-- Hero Section (Clean Photo Display) -->
         <section id="home" class="relative min-h-screen flex items-center justify-center p-4 sm:p-8 pt-28 overflow-hidden">
             <div class="absolute inset-3 sm:inset-6 gold-border-frame z-10 pointer-events-none rounded-xl hidden sm:block"></div>
             
             <img src="Gemini_Generated_Image_f9lijif9lijif9li.jpeg" alt="Geetha & Pavan" class="absolute inset-0 w-full h-full object-cover object-center scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-royalGreen/95 via-royalGreen/50 to-black/30"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-royalGreen/90 via-royalGreen/40 to-black/20"></div>
 
-            <div class="relative z-20 max-w-3xl mx-auto text-center text-white space-y-6 px-4">
+            <div class="relative z-20 max-w-3xl mx-auto text-center text-white space-y-5 px-4">
                 
+                <p class="font-telugu text-templeGold text-lg sm:text-2xl tracking-widest drop-shadow-md">
+                    శ్రీరస్తు · శుభమస్తు · అవిఘ్నమస్తు
+                </p>
+
                 <h1 class="font-editorial text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none drop-shadow-lg text-silkCream">
                     Geetha <span class="font-light italic text-templeGold">&</span> Pavan
                 </h1>
 
                 <div class="w-28 h-px bg-templeGold mx-auto opacity-90"></div>
 
-                <!-- Beautiful Royal Card Banner for Welcome Message -->
-                <div class="hero-welcome-box rounded-2xl p-6 sm:p-8 max-w-2xl mx-auto shadow-2xl">
-                    <p class="font-telugu text-templeGold text-base sm:text-xl tracking-widest mb-3">
-                        Srirastu · Subhamastu · Avighnamastu
-                    </p>
-                    <p class="font-editorial italic text-lg sm:text-2xl text-silkCream leading-relaxed font-light">
-                        We are overjoyed to celebrate our wedding with all of you. Welcome to our special celebration—we can’t wait to create unforgettable memories together!
-                    </p>
-                </div>
+                <p class="font-editorial italic text-lg sm:text-2xl text-warmSand max-w-2xl mx-auto leading-relaxed drop-shadow">
+                    We are overjoyed to celebrate our wedding with all of you. Welcome to our special celebration—we can’t wait to create unforgettable memories together!
+                </p>
 
-                <div class="pt-2">
-                    <span class="inline-block bg-royalGreen/80 backdrop-blur-md text-silkCream text-xs uppercase tracking-[0.3em] px-8 py-3 rounded-full border border-templeGold/50 shadow-xl">
+                <div class="pt-4">
+                    <span class="inline-block bg-royalGreen/60 backdrop-blur-md text-silkCream text-xs uppercase tracking-[0.3em] px-8 py-3 rounded-full border border-templeGold/50 shadow-xl">
                         November 20, 2026 · Tampa, Florida
                     </span>
                 </div>
