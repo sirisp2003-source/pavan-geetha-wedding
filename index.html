@@ -11,18 +11,18 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Serif+Telugu:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Noto+Serif+Telugu:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        forestSage: '#213227',
-                        burntAmber: '#B85B38',
-                        goldBronze: '#D4AF37',
-                        sandAlabaster: '#F5F1EB',
-                        silkCream: '#FAF8F5',
+                        forestSage: '#1B2E23',
+                        burntAmber: '#9E472A',
+                        goldBronze: '#C5A059',
+                        sandAlabaster: '#FBF9F5',
+                        warmPearl: '#F4EFE6',
                     },
                     fontFamily: {
                         editorial: ['Cormorant Garamond', 'serif'],
@@ -35,110 +35,142 @@
     </script>
     <style>
         .glass-card {
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(212, 175, 55, 0.25);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(197, 160, 89, 0.35);
+            box-shadow: 0 20px 40px -15px rgba(27, 46, 35, 0.08);
+        }
+        /* Falling Petals Animation */
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+        }
+        .petal {
+            position: fixed;
+            background: rgba(197, 160, 89, 0.25);
+            border-radius: 150% 0 150% 0;
+            pointer-events: none;
+            z-index: 30;
+            animation: fall linear infinite;
         }
     </style>
 </head>
-<body class="bg-sandAlabaster text-gray-800 antialiased selection:bg-burntAmber selection:text-white">
+<body class="bg-sandAlabaster text-gray-800 antialiased selection:bg-goldBronze selection:text-white">
 
-    <!-- Minimal Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-4 bg-white/85 backdrop-blur-md border-b border-goldBronze/20">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <a href="#home" class="font-editorial italic text-2xl font-bold tracking-tight text-forestSage">
-                Geetha <span class="font-sans font-light text-burntAmber text-sm">&</span> Pavan
+    <!-- Floating Petal Effects -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="petal" style="left: 10%; width: 12px; height: 16px; animation-duration: 12s; animation-delay: 0s;"></div>
+        <div class="petal" style="left: 30%; width: 10px; height: 14px; animation-duration: 15s; animation-delay: 3s;"></div>
+        <div class="petal" style="left: 70%; width: 14px; height: 18px; animation-duration: 10s; animation-delay: 1s;"></div>
+        <div class="petal" style="left: 85%; width: 11px; height: 15px; animation-duration: 14s; animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Luxury Minimal Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-40 px-6 sm:px-12 py-5 bg-sandAlabaster/80 backdrop-blur-md border-b border-goldBronze/20 transition-all">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="#home" class="font-editorial italic text-2xl sm:text-3xl font-semibold tracking-wide text-forestSage">
+                Geetha <span class="font-sans font-light text-goldBronze text-base">&</span> Pavan
             </a>
-            <nav class="hidden md:flex space-x-8 text-xs uppercase tracking-[0.2em] font-medium text-gray-600">
-                <a href="#home" class="hover:text-burntAmber transition">Welcome</a>
-                <a href="#muhurtham" class="hover:text-burntAmber transition">Muhurtham</a>
-                <a href="#venue" class="hover:text-burntAmber transition">Venue</a>
-                <a href="#rsvp" class="hover:text-burntAmber transition">RSVP</a>
+            <nav class="hidden md:flex space-x-10 text-[11px] uppercase tracking-[0.25em] font-medium text-gray-600">
+                <a href="#home" class="hover:text-goldBronze transition">Welcome</a>
+                <a href="#muhurtham" class="hover:text-goldBronze transition">Muhurtham</a>
+                <a href="#venue" class="hover:text-goldBronze transition">Venue</a>
+                <a href="#rsvp" class="hover:text-goldBronze transition">RSVP</a>
             </nav>
-            <a href="#rsvp" class="bg-forestSage hover:bg-burntAmber text-white text-[11px] font-semibold uppercase tracking-[0.2em] px-5 py-2 rounded-full transition shadow-sm">
-                RSVP
+            <a href="#rsvp" class="bg-forestSage hover:bg-goldBronze text-white text-[10px] font-semibold uppercase tracking-[0.25em] px-6 py-2.5 rounded-full transition shadow-sm">
+                RSVP Now
             </a>
         </div>
     </header>
 
-    <!-- Clean Hero Section (Ring Photo Background) -->
-    <section id="home" class="relative min-h-screen flex items-end justify-center pb-20 pt-32 px-4 overflow-hidden">
-        <img src="watermarked_img_4588291758986329749.jpg" alt="Geetha & Pavan" class="absolute inset-0 w-full h-full object-cover object-center">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+    <!-- Editorial Hero Section (Ring Photo Background with Luxury Border) -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center p-4 sm:p-8 pt-28 overflow-hidden">
+        <div class="absolute inset-3 sm:inset-6 border border-goldBronze/40 z-10 pointer-events-none rounded-2xl hidden sm:block"></div>
+        
+        <img src="Gemini_Generated_Image_f9lijif9lijif9li.jpeg" alt="Geetha & Pavan" class="absolute inset-0 w-full h-full object-cover object-center scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/20"></div>
 
-        <div class="relative z-10 max-w-2xl mx-auto text-center text-white space-y-4">
-            <h1 class="font-editorial text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-tight drop-shadow-md">
-                Geetha & Pavan
-            </h1>
-
-            <div class="w-20 h-px bg-goldBronze mx-auto opacity-80"></div>
-
-            <p class="font-editorial italic text-lg sm:text-2xl text-sandAlabaster max-w-xl mx-auto leading-relaxed drop-shadow-sm">
-                Srirastu · Subhamastu · Avighnamastu. We are overjoyed to celebrate our wedding with all of you. Welcome to our special celebration—we can’t wait to create unforgettable memories together!
+        <div class="relative z-20 max-w-3xl mx-auto text-center text-white space-y-6 px-4">
+            <p class="font-telugu text-goldBronze text-lg sm:text-xl tracking-wider drop-shadow">
+                శ్రీరస్తు · శుభమస్తు · అవిఘ్నమస్తు
             </p>
 
-            <div class="pt-2">
-                <span class="inline-block bg-white/20 backdrop-blur-md text-white text-xs uppercase tracking-[0.25em] px-6 py-2.5 rounded-full border border-white/30">
-                    November 20–22, 2026 · Tampa, FL
+            <h1 class="font-editorial text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none drop-shadow-lg">
+                Geetha <span class="font-light italic text-goldBronze">&</span> Pavan
+            </h1>
+
+            <div class="w-24 h-px bg-goldBronze mx-auto opacity-80"></div>
+
+            <p class="font-editorial italic text-xl sm:text-2xl text-warmPearl max-w-xl mx-auto leading-relaxed drop-shadow">
+                "Surrounded by the blessings of our family and traditions, we are overjoyed to celebrate our wedding with all of you."
+            </p>
+
+            <div class="pt-4">
+                <span class="inline-block bg-white/10 backdrop-blur-md text-sandAlabaster text-xs uppercase tracking-[0.3em] px-8 py-3 rounded-full border border-goldBronze/40 shadow-lg">
+                    November 20, 2026 · Tampa, Florida
                 </span>
             </div>
         </div>
     </section>
 
     <!-- Muhurtham Section -->
-    <section id="muhurtham" class="py-24 max-w-3xl mx-auto px-4">
-        <div class="text-center space-y-2 mb-8">
-            <span class="font-telugu text-base text-burntAmber">ముహూర్తం</span>
-            <h2 class="font-editorial text-4xl sm:text-5xl text-forestSage">Sumuhurtham</h2>
-            <div class="w-12 h-px bg-goldBronze mx-auto"></div>
+    <section id="muhurtham" class="py-28 max-w-3xl mx-auto px-4">
+        <div class="text-center space-y-3 mb-12">
+            <span class="font-telugu text-goldBronze text-lg tracking-widest">ముహూర్తం</span>
+            <h2 class="font-editorial text-4xl sm:text-5xl text-forestSage font-semibold">Sumuhurtham</h2>
+            <div class="w-16 h-px bg-goldBronze mx-auto"></div>
         </div>
 
-        <div class="glass-card rounded-3xl p-8 sm:p-12 shadow-xl border border-goldBronze/30 text-center space-y-6">
-            <h3 class="font-editorial text-2xl text-forestSage font-semibold">The Sacred Ceremony</h3>
-            <p class="text-sm text-gray-600 max-w-lg mx-auto font-light leading-relaxed">
-                With the divine blessings of our Almighty and elders, we request the honor of your presence as we take our seven sacred steps together.
+        <div class="glass-card rounded-3xl p-8 sm:p-14 text-center space-y-8">
+            <span class="inline-block px-4 py-1.5 bg-warmPearl text-forestSage text-[10px] uppercase tracking-[0.25em] rounded-full font-medium border border-goldBronze/30">
+                Auspicious Ceremony
+            </span>
+
+            <p class="font-editorial italic text-xl sm:text-2xl text-gray-700 max-w-lg mx-auto leading-relaxed">
+                With the divine grace of the Almighty and our elders, we invite you to grace our sacred wedding ceremony.
             </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-goldBronze/20 text-xs text-gray-700">
-                <div class="p-4 rounded-2xl bg-white/60">
-                    <p class="font-semibold text-gray-900 uppercase tracking-widest mb-1">🗓️ Date & Time</p>
-                    <p class="text-gray-600">Saturday, November 21, 2026</p>
-                    <p class="text-burntAmber font-medium mt-1">Auspicious Muhurtham</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-goldBronze/20 text-xs">
+                <div class="p-6 rounded-2xl bg-warmPearl/60 border border-goldBronze/20">
+                    <p class="font-semibold text-gray-900 uppercase tracking-widest mb-1 text-[11px]">🗓️ Date</p>
+                    <p class="font-editorial text-xl text-forestSage mt-1">Saturday, November 21, 2026</p>
                 </div>
-                <div class="p-4 rounded-2xl bg-white/60">
-                    <p class="font-semibold text-gray-900 uppercase tracking-widest mb-1">👗 Suggested Attire</p>
-                    <p class="text-gray-600">Traditional Indian / Festive Wear</p>
-                    <p class="text-gray-500 italic mt-1">Feast to follow ceremony</p>
+                <div class="p-6 rounded-2xl bg-warmPearl/60 border border-goldBronze/20">
+                    <p class="font-semibold text-gray-900 uppercase tracking-widest mb-1 text-[11px]">⏰ Muhurtham Time</p>
+                    <p class="font-editorial text-xl text-burntAmber mt-1">8:00 PM Onwards</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Venue Section -->
-    <section id="venue" class="py-16 max-w-3xl mx-auto px-4">
-        <div class="text-center space-y-2 mb-8">
-            <span class="font-telugu text-base text-burntAmber">వేదిక</span>
-            <h2 class="font-editorial text-4xl sm:text-5xl text-forestSage">The Venue</h2>
-            <div class="w-12 h-px bg-goldBronze mx-auto"></div>
+    <section id="venue" class="py-12 max-w-3xl mx-auto px-4">
+        <div class="text-center space-y-3 mb-12">
+            <span class="font-telugu text-goldBronze text-lg tracking-widest">వేదిక</span>
+            <h2 class="font-editorial text-4xl sm:text-5xl text-forestSage font-semibold">The Venue</h2>
+            <div class="w-16 h-px bg-goldBronze mx-auto"></div>
         </div>
 
-        <div class="glass-card rounded-3xl p-8 sm:p-12 shadow-xl border border-goldBronze/30 text-center space-y-6">
-            <h3 class="font-editorial text-3xl text-forestSage font-semibold">Hindu Temple of Florida</h3>
-            <p class="text-xs text-gray-500 uppercase tracking-widest font-medium">Tampa, Florida</p>
+        <div class="glass-card rounded-3xl p-8 sm:p-14 text-center space-y-8">
+            <div class="space-y-2">
+                <h3 class="font-editorial text-3xl sm:text-4xl text-forestSage font-bold">Hindu Temple of Florida</h3>
+                <p class="text-xs uppercase tracking-[0.25em] text-goldBronze font-medium">Tampa, Florida</p>
+            </div>
 
             <p class="text-sm text-gray-600 max-w-lg mx-auto leading-relaxed font-light">
-                Set amidst peaceful surroundings in Tampa, the Hindu Temple of Florida provides an authentic, sacred, and serene atmosphere for our wedding celebrations.
+                Set amidst peaceful, sacred surroundings in Tampa, providing a serene and traditional atmosphere for our celebration.
             </p>
 
-            <div class="pt-4 border-t border-goldBronze/20 text-xs text-gray-700 space-y-1">
-                <p class="font-semibold text-gray-900">📍 Location Address</p>
-                <p class="text-gray-600">5509 Lynn Rd, Tampa, FL 33624, USA</p>
+            <div class="py-4 border-y border-goldBronze/20 max-w-md mx-auto text-xs text-gray-700 space-y-1">
+                <p class="font-semibold text-gray-900 uppercase tracking-wider">📍 Address</p>
+                <p class="text-gray-600 font-light">5509 Lynn Rd, Tampa, FL 33624, USA</p>
             </div>
 
             <div>
                 <a href="https://maps.google.com/?cid=3122571111231635838" target="_blank" rel="noopener noreferrer" 
-                   class="inline-flex items-center gap-2 bg-forestSage hover:bg-burntAmber text-white px-7 py-3 rounded-full text-xs uppercase tracking-[0.18em] font-medium shadow-md transition">
+                   class="inline-flex items-center gap-2.5 bg-forestSage hover:bg-goldBronze text-white px-8 py-3.5 rounded-full text-xs uppercase tracking-[0.2em] font-medium shadow-md transition duration-300">
                     <i class="fa-solid fa-map-location-dot text-goldBronze"></i> Open in Google Maps
                 </a>
             </div>
@@ -146,35 +178,35 @@
     </section>
 
     <!-- RSVP Section -->
-    <section id="rsvp" class="py-24 max-w-2xl mx-auto px-4">
-        <div class="glass-card rounded-3xl p-8 sm:p-12 shadow-xl border border-goldBronze/30">
-            <div class="text-center space-y-2 mb-8">
-                <h2 class="font-editorial text-4xl sm:text-5xl text-forestSage">RSVP</h2>
-                <p class="text-xs uppercase tracking-[0.2em] text-burntAmber font-semibold">Kindly Respond By October 30, 2026</p>
-                <div class="w-12 h-px bg-goldBronze mx-auto"></div>
+    <section id="rsvp" class="py-28 max-w-2xl mx-auto px-4">
+        <div class="glass-card rounded-3xl p-8 sm:p-14 shadow-xl">
+            <div class="text-center space-y-3 mb-10">
+                <h2 class="font-editorial text-4xl sm:text-5xl text-forestSage font-semibold">RSVP</h2>
+                <p class="text-[11px] uppercase tracking-[0.25em] text-burntAmber font-semibold">Kindly Respond By October 30, 2026</p>
+                <div class="w-16 h-px bg-goldBronze mx-auto"></div>
             </div>
 
-            <form onsubmit="alert('Thank you! Your RSVP has been received.'); return false;" class="space-y-5">
+            <form onsubmit="alert('Thank you! Your RSVP has been received.'); return false;" class="space-y-6">
                 <div>
-                    <label class="block text-xs uppercase tracking-widest text-gray-700 mb-2">Full Name *</label>
-                    <input type="text" required placeholder="Enter your name" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-xs focus:outline-none focus:border-burntAmber">
+                    <label class="block text-[11px] uppercase tracking-[0.2em] text-gray-700 mb-2 font-medium">Full Name *</label>
+                    <input type="text" required placeholder="Enter your full name" class="w-full px-5 py-3.5 rounded-2xl border border-gray-300/80 bg-white/70 text-xs focus:outline-none focus:border-goldBronze transition">
                 </div>
 
                 <div>
-                    <label class="block text-xs uppercase tracking-widest text-gray-700 mb-2">Will You Be Attending? *</label>
+                    <label class="block text-[11px] uppercase tracking-[0.2em] text-gray-700 mb-2 font-medium">Will You Be Attending? *</label>
                     <div class="grid grid-cols-2 gap-4">
-                        <label class="flex items-center justify-center p-3 rounded-xl border border-gray-300 text-xs font-medium cursor-pointer hover:border-burntAmber bg-white">
-                            <input type="radio" name="attending" required class="accent-burntAmber mr-2"> Joyfully Accepts
+                        <label class="flex items-center justify-center p-3.5 rounded-2xl border border-gray-300/80 text-xs font-medium cursor-pointer hover:border-goldBronze hover:bg-white bg-white/70 transition">
+                            <input type="radio" name="attending" required class="accent-goldBronze mr-2"> Joyfully Accepts
                         </label>
-                        <label class="flex items-center justify-center p-3 rounded-xl border border-gray-300 text-xs font-medium cursor-pointer hover:border-burntAmber bg-white">
-                            <input type="radio" name="attending" class="accent-burntAmber mr-2"> Regretfully Declines
+                        <label class="flex items-center justify-center p-3.5 rounded-2xl border border-gray-300/80 text-xs font-medium cursor-pointer hover:border-goldBronze hover:bg-white bg-white/70 transition">
+                            <input type="radio" name="attending" class="accent-goldBronze mr-2"> Regretfully Declines
                         </label>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs uppercase tracking-widest text-gray-700 mb-2">Number of Guests</label>
-                    <select class="w-full px-4 py-3 rounded-xl border border-gray-300 text-xs focus:outline-none focus:border-burntAmber bg-white">
+                    <label class="block text-[11px] uppercase tracking-[0.2em] text-gray-700 mb-2 font-medium">Number of Guests</label>
+                    <select class="w-full px-5 py-3.5 rounded-2xl border border-gray-300/80 bg-white/70 text-xs focus:outline-none focus:border-goldBronze transition">
                         <option>1 Guest</option>
                         <option>2 Guests (+1)</option>
                         <option>3+ Family</option>
@@ -182,22 +214,24 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs uppercase tracking-widest text-gray-700 mb-2">Blessings & Messages</label>
-                    <textarea rows="3" placeholder="Write your blessings for Pavan & Geetha..." class="w-full px-4 py-3 rounded-xl border border-gray-300 text-xs focus:outline-none focus:border-burntAmber"></textarea>
+                    <label class="block text-[11px] uppercase tracking-[0.2em] text-gray-700 mb-2 font-medium">Blessings & Messages</label>
+                    <textarea rows="3" placeholder="Write your wishes for Pavan & Geetha..." class="w-full px-5 py-3.5 rounded-2xl border border-gray-300/80 bg-white/70 text-xs focus:outline-none focus:border-goldBronze transition"></textarea>
                 </div>
 
-                <button type="submit" class="w-full bg-burntAmber hover:bg-forestSage text-white font-semibold py-3.5 rounded-xl text-xs uppercase tracking-[0.2em] shadow-md transition">
+                <button type="submit" class="w-full bg-goldBronze hover:bg-forestSage text-white font-semibold py-4 rounded-2xl text-xs uppercase tracking-[0.25em] shadow-lg transition duration-300">
                     Submit Response
                 </button>
             </form>
         </div>
     </section>
 
-    <!-- Simple Footer -->
-    <footer class="py-10 bg-forestSage text-center text-gray-300 text-xs border-t border-goldBronze/20">
-        <p class="font-editorial italic text-2xl text-goldBronze mb-1">Geetha & Pavan</p>
-        <p class="font-telugu text-xs text-sandAlabaster/80 mb-2">శ్రీరస్తు · శుభమస్తు · అవిఘ్నమస్తు</p>
-        <p class="text-[10px] uppercase tracking-widest text-gray-400">November 20–22, 2026 · Tampa, Florida</p>
+    <!-- Luxury Editorial Footer -->
+    <footer class="py-16 bg-forestSage text-center text-gray-300 text-xs border-t border-goldBronze/30 px-4">
+        <p class="font-editorial italic text-3xl sm:text-4xl text-goldBronze mb-2">We’re getting married! 💍</p>
+        <p class="text-warmPearl text-sm tracking-wide mb-3">Geetha & Pavan · November 20, 2026 · Tampa, Florida</p>
+        <p class="font-telugu text-base text-goldBronze/90 mb-6">శ్రీరస్తు · శుభమస్తు · అవిఘ్నమస్తు</p>
+        <div class="w-20 h-px bg-goldBronze/40 mx-auto mb-6"></div>
+        <p class="text-gray-400 text-[11px] uppercase tracking-[0.3em]">See you at the celebration! 💛</p>
     </footer>
 
 </body>
