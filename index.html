@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Noto+Serif+Telugu:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Noto+Serif+Telugu:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -21,6 +21,7 @@
                         royalGreen: '#132A1D',
                         deepEmerald: '#1B3828',
                         templeGold: '#D4AF37',
+                        brightGold: '#FFD700',
                         antiqueGold: '#C5A059',
                         silkCream: '#FDFCF7',
                         warmSand: '#F4EFEA',
@@ -35,13 +36,16 @@
         }
     </script>
     <style>
+        /* Royal Glassmorphism Cards */
         .royal-card {
             background: rgba(253, 252, 247, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 25px 50px -12px rgba(19, 42, 29, 0.12);
+            box-shadow: 0 25px 50px -12px rgba(19, 42, 29, 0.15);
         }
+
+        /* Gold Border Frame */
         .gold-border-frame {
             border: 1px solid rgba(212, 175, 55, 0.5);
             position: relative;
@@ -53,7 +57,38 @@
             border: 1px solid rgba(212, 175, 55, 0.25);
             pointer-events: none;
         }
-        /* Falling Jasmine / Gold Petals */
+
+        /* Majestic Gold Metallic Gradient Text */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF099 0%, #F5D061 30%, #E6B800 60%, #FFF5C2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Temple Arch / Sacred Crest Frame Header */
+        .temple-blessing-frame {
+            background: rgba(19, 42, 29, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1.5px solid rgba(212, 175, 55, 0.85);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.2);
+            position: relative;
+        }
+
+        /* Corner Decorative Motifs for Blessing Box */
+        .corner-motif {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-color: #D4AF37;
+        }
+        .corner-tl { top: -2px; left: -2px; border-top: 3px solid #D4AF37; border-left: 3px solid #D4AF37; }
+        .corner-tr { top: -2px; right: -2px; border-top: 3px solid #D4AF37; border-right: 3px solid #D4AF37; }
+        .corner-bl { bottom: -2px; left: -2px; border-bottom: 3px solid #D4AF37; border-left: 3px solid #D4AF37; }
+        .corner-br { bottom: -2px; right: -2px; border-bottom: 3px solid #D4AF37; border-right: 3px solid #D4AF37; }
+
+        /* Floating Jasmine / Gold Petals Animation */
         @keyframes fall {
             0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
             20% { opacity: 0.9; }
@@ -61,16 +96,17 @@
         }
         .petal {
             position: fixed;
-            background: rgba(212, 175, 55, 0.3);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.6), rgba(212, 175, 55, 0.3));
             border-radius: 150% 0 150% 0;
             pointer-events: none;
             z-index: 30;
             animation: fall linear infinite;
         }
-        /* Traditional Music Instruments Glowing Halo */
+
+        /* Traditional Instrument Halo Effect */
         @keyframes aura-pulse {
             0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); transform: scale(1); }
-            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8); transform: scale(1.05); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8); transform: scale(1.04); }
         }
         .instrument-halo {
             animation: aura-pulse 3.5s infinite ease-in-out;
@@ -109,12 +145,12 @@
             if (!isPlaying) {
                 player.playVideo();
                 btnText.innerText = "Music: Playing 🎶";
-                btnIcon.className = "fa-solid fa-pause animate-pulse";
+                btnIcon.className = "fa-solid fa-pause animate-pulse text-brightGold";
                 isPlaying = true;
             } else {
                 player.pauseVideo();
                 btnText.innerText = "Play Music 🎶";
-                btnIcon.className = "fa-solid fa-music";
+                btnIcon.className = "fa-solid fa-music text-templeGold";
                 isPlaying = false;
             }
         }
@@ -126,21 +162,21 @@
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     </script>
 
-    <!-- Floating Play Music Button (Plays audio inside page) -->
+    <!-- Floating Play Music Button (In-Page Audio Toggle) -->
     <div class="fixed bottom-6 right-6 z-50">
         <button onclick="togglePlayMusic()" 
-           class="flex items-center gap-2.5 bg-royalGreen text-templeGold px-5 py-3 rounded-full shadow-2xl border border-templeGold/50 text-xs font-semibold hover:bg-templeGold hover:text-white transition duration-300">
-            <i id="music-icon" class="fa-solid fa-music"></i>
-            <span id="music-text" class="uppercase tracking-widest text-[10px]">Play Music 🎶</span>
+           class="flex items-center gap-3 bg-royalGreen/90 backdrop-blur-md text-templeGold px-5 py-3 rounded-full shadow-2xl border border-templeGold/60 text-xs font-semibold hover:bg-templeGold hover:text-white transition duration-300">
+            <i id="music-icon" class="fa-solid fa-music text-templeGold"></i>
+            <span id="music-text" class="uppercase tracking-widest text-[10px] font-bold">Play Music 🎶</span>
         </button>
     </div>
 
-    <!-- Floating Jasmine/Gold Petals -->
+    <!-- Floating Gold/Jasmine Petals -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-30">
-        <div class="petal" style="left: 12%; width: 12px; height: 16px; animation-duration: 14s; animation-delay: 0s;"></div>
-        <div class="petal" style="left: 35%; width: 9px; height: 13px; animation-duration: 16s; animation-delay: 3s;"></div>
-        <div class="petal" style="left: 68%; width: 13px; height: 17px; animation-duration: 11s; animation-delay: 1s;"></div>
-        <div class="petal" style="left: 88%; width: 10px; height: 14px; animation-duration: 13s; animation-delay: 4s;"></div>
+        <div class="petal" style="left: 10%; width: 12px; height: 16px; animation-duration: 14s; animation-delay: 0s;"></div>
+        <div class="petal" style="left: 32%; width: 9px; height: 13px; animation-duration: 16s; animation-delay: 3s;"></div>
+        <div class="petal" style="left: 65%; width: 13px; height: 17px; animation-duration: 11s; animation-delay: 1s;"></div>
+        <div class="petal" style="left: 85%; width: 10px; height: 14px; animation-duration: 13s; animation-delay: 4s;"></div>
     </div>
 
     <!-- Navigation Bar -->
@@ -151,6 +187,7 @@
             </a>
             <nav class="hidden md:flex space-x-10 text-[11px] uppercase tracking-[0.25em] font-medium text-gray-700">
                 <a href="#home" class="hover:text-templeGold transition">Welcome</a>
+                <a href="#couple" class="hover:text-templeGold transition">Gallery</a>
                 <a href="#muhurtham" class="hover:text-templeGold transition">Muhurtham</a>
                 <a href="#venue" class="hover:text-templeGold transition">Venue</a>
                 <a href="#rsvp" class="hover:text-templeGold transition">RSVP</a>
@@ -164,41 +201,91 @@
     <!-- Main Content Wrapper -->
     <main class="relative">
 
-        <!-- Hero Section (Clean Photo Display) -->
+        <!-- Hero Section with SR508126.jpg Background -->
         <section id="home" class="relative min-h-screen flex items-center justify-center p-4 sm:p-8 pt-28 overflow-hidden">
             <div class="absolute inset-3 sm:inset-6 gold-border-frame z-10 pointer-events-none rounded-xl hidden sm:block"></div>
             
-            <img src="Gemini_Generated_Image_f9lijif9lijif9li.jpeg" alt="Geetha & Pavan" class="absolute inset-0 w-full h-full object-cover object-center scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-royalGreen/90 via-royalGreen/40 to-black/20"></div>
+            <img src="SR508126.jpg" alt="Geetha & Pavan" class="absolute inset-0 w-full h-full object-cover object-center scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-royalGreen/90 via-royalGreen/50 to-black/40"></div>
 
-            <div class="relative z-20 max-w-3xl mx-auto text-center text-white space-y-5 px-4">
+            <div class="relative z-20 max-w-3xl mx-auto text-center text-white space-y-6 px-4">
                 
-                <p class="font-telugu text-templeGold text-lg sm:text-2xl tracking-widest drop-shadow-md">
-                    శ్రీరస్తు · శుభమస్తు · అవిఘ్నమస్తు
-                </p>
+                <!-- Highlighted Sacred Telugu Temple Blessing Banner -->
+                <div class="temple-blessing-frame rounded-2xl px-6 py-4 sm:px-8 sm:py-5 max-w-xl mx-auto inline-block border border-templeGold/70">
+                    <div class="corner-motif corner-tl"></div>
+                    <div class="corner-motif corner-tr"></div>
+                    <div class="corner-motif corner-bl"></div>
+                    <div class="corner-motif corner-br"></div>
 
+                    <!-- Ornamental Crest Symbol -->
+                    <div class="flex items-center justify-center gap-3 mb-1.5">
+                        <span class="w-8 h-px bg-gradient-to-r from-transparent to-templeGold"></span>
+                        <i class="fa-solid fa-om text-brightGold text-sm"></i>
+                        <span class="w-8 h-px bg-gradient-to-l from-transparent to-templeGold"></span>
+                    </div>
+
+                    <h2 class="font-telugu text-xl sm:text-2xl md:text-3xl font-bold tracking-wider gold-gradient-text leading-snug">
+                        శ్రీరస్తు · శుభమస్తు · అవిఘ్నమస్తు
+                    </h2>
+                </div>
+
+                <!-- Groom & Bride Names -->
                 <h1 class="font-editorial text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none drop-shadow-lg text-silkCream">
                     Geetha <span class="font-light italic text-templeGold">&</span> Pavan
                 </h1>
 
-                <div class="w-28 h-px bg-templeGold mx-auto opacity-90"></div>
+                <div class="w-28 h-px bg-gradient-to-r from-transparent via-templeGold to-transparent mx-auto"></div>
 
-                <p class="font-editorial italic text-lg sm:text-2xl text-warmSand max-w-2xl mx-auto leading-relaxed drop-shadow">
+                <!-- Welcome Quote -->
+                <p class="font-editorial italic text-lg sm:text-2xl text-warmSand max-w-2xl mx-auto leading-relaxed drop-shadow font-light">
                     We are overjoyed to celebrate our wedding with all of you. Welcome to our special celebration—we can’t wait to create unforgettable memories together!
                 </p>
 
-                <div class="pt-4">
-                    <span class="inline-block bg-royalGreen/60 backdrop-blur-md text-silkCream text-xs uppercase tracking-[0.3em] px-8 py-3 rounded-full border border-templeGold/50 shadow-xl">
+                <div class="pt-2">
+                    <span class="inline-block bg-royalGreen/70 backdrop-blur-md text-silkCream text-xs uppercase tracking-[0.3em] px-8 py-3 rounded-full border border-templeGold/50 shadow-xl font-medium">
                         November 20, 2026 · Tampa, Florida
                     </span>
                 </div>
             </div>
         </section>
 
-        <!-- Sumuhurtham Section -->
-        <section id="muhurtham" class="py-28 max-w-3xl mx-auto px-4">
+        <!-- Gallery Showcase Section -->
+        <section id="couple" class="py-20 max-w-5xl mx-auto px-4">
             <div class="text-center space-y-3 mb-12">
-                <span class="font-telugu text-templeGold text-xl tracking-widest">ముహూర్తం</span>
+                <span class="font-telugu text-templeGold text-xl tracking-widest font-semibold">ప్రేమ · బంధం</span>
+                <h2 class="font-editorial text-4xl sm:text-5xl text-royalGreen font-semibold">Moments of Togetherness</h2>
+                <div class="w-16 h-px bg-templeGold mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Primary Portrait Frame -->
+                <div class="royal-card p-4 rounded-3xl gold-border-frame shadow-2xl">
+                    <div class="overflow-hidden rounded-2xl relative group">
+                        <img src="SR508126.jpg" alt="Geetha & Pavan Portrait" class="w-full h-96 object-cover object-center group-hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-center">
+                            <p class="font-editorial italic text-white text-xl">Geetha & Pavan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wedding Rings Frame -->
+                <div class="royal-card p-4 rounded-3xl gold-border-frame shadow-2xl">
+                    <div class="overflow-hidden rounded-2xl relative group">
+                        <img src="Gemini_Generated_Image_f9lijif9lijif9li.jpeg" alt="Wedding Rings" class="w-full h-96 object-cover object-center group-hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-center">
+                            <p class="font-editorial italic text-white text-xl">Two Hearts · One Vow</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sumuhurtham Section -->
+        <section id="muhurtham" class="py-20 max-w-3xl mx-auto px-4">
+            <div class="text-center space-y-3 mb-12">
+                <span class="font-telugu text-templeGold text-xl tracking-widest font-semibold">ముహూర్తం</span>
                 <h2 class="font-editorial text-4xl sm:text-5xl text-royalGreen font-semibold">Sumuhurtham</h2>
                 <div class="w-16 h-px bg-templeGold mx-auto"></div>
             </div>
@@ -238,7 +325,7 @@
         <!-- Venue Section -->
         <section id="venue" class="py-12 max-w-3xl mx-auto px-4">
             <div class="text-center space-y-3 mb-12">
-                <span class="font-telugu text-templeGold text-xl tracking-widest">వేదిక</span>
+                <span class="font-telugu text-templeGold text-xl tracking-widest font-semibold">వేదిక</span>
                 <h2 class="font-editorial text-4xl sm:text-5xl text-royalGreen font-semibold">The Venue</h2>
                 <div class="w-16 h-px bg-templeGold mx-auto"></div>
             </div>
@@ -246,7 +333,7 @@
             <div class="royal-card rounded-3xl p-8 sm:p-14 text-center space-y-8 gold-border-frame">
                 <div class="space-y-2">
                     <h3 class="font-editorial text-3xl sm:text-4xl text-royalGreen font-bold">Hindu Temple of Florida</h3>
-                    <p class="text-xs uppercase tracking-[0.25em] text-templeGold font-medium">Tampa, Florida</p>
+                    <p class="text-xs uppercase tracking-[0.25em] text-templeGold font-semibold">Tampa, Florida</p>
                 </div>
 
                 <p class="text-sm text-gray-700 max-w-lg mx-auto leading-relaxed font-light">
