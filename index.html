@@ -280,45 +280,45 @@
             </div>
         </section>
 
-        <!-- RSVP Section -->
+        <!-- RSVP Section with Formspree Integration -->
         <section id="rsvp" class="py-24 max-w-2xl mx-auto px-4">
             <div class="royal-card rounded-3xl p-8 sm:p-14 shadow-xl gold-border-frame">
                 <div class="text-center space-y-3 mb-10">
                     <h2 class="font-editorial text-4xl sm:text-5xl text-royalGreen font-semibold">RSVP</h2>
-                    <p class="text-[11px] uppercase tracking-[0.25em] text-amber-800 font-semibold">Kindly Grace Us By November 5, 2026</p>
+                    <p class="text-[11px] uppercase tracking-[0.25em] text-amber-800 font-semibold">Kindly Grace Us By November 5, 2026[cite: 1, 2]</p>
                     <div class="w-16 h-px bg-templeGold mx-auto"></div>
                 </div>
 
-                <form onsubmit="alert('Thank you! Your gracious response has been recorded.'); return false;" class="space-y-6">
+                <form action="https://formspree.io/f/xwlvdnov" method="POST" class="space-y-6">
                     <div>
                         <label class="block text-[11px] uppercase tracking-[0.2em] text-royalGreen mb-2 font-semibold">Full Name *</label>
-                        <input type="text" required placeholder="Enter your full name" class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition">
+                        <input type="text" name="name" required placeholder="Enter your full name" class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition">
                     </div>
 
                     <div>
                         <label class="block text-[11px] uppercase tracking-[0.2em] text-royalGreen mb-2 font-semibold">Will You Be Attending? *</label>
                         <div class="grid grid-cols-2 gap-4">
                             <label class="flex items-center justify-center p-3.5 rounded-2xl border border-templeGold/40 text-xs font-medium cursor-pointer hover:border-templeGold hover:bg-white bg-white/90 transition">
-                                <input type="radio" name="attending" required class="accent-templeGold mr-2"> Joyfully Accepts
+                                <input type="radio" name="attending" value="Joyfully Accepts" required class="accent-templeGold mr-2"> Joyfully Accepts
                             </label>
                             <label class="flex items-center justify-center p-3.5 rounded-2xl border border-templeGold/40 text-xs font-medium cursor-pointer hover:border-templeGold hover:bg-white bg-white/90 transition">
-                                <input type="radio" name="attending" class="accent-templeGold mr-2"> Regretfully Declines
+                                <input type="radio" name="attending" value="Regretfully Declines" class="accent-templeGold mr-2"> Regretfully Declines
                             </label>
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-[11px] uppercase tracking-[0.2em] text-royalGreen mb-2 font-semibold">Number of Guests</label>
-                        <select class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition">
-                            <option>1 Guest</option>
-                            <option>2 Guests (+1)</option>
-                            <option>3+ Family</option>
+                        <select name="guests" class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition">
+                            <option value="1 Guest">1 Guest</option>
+                            <option value="2 Guests (+1)">2 Guests (+1)</option>
+                            <option value="3+ Family">3+ Family</option>
                         </select>
                     </div>
 
                     <div>
                         <label class="block text-[11px] uppercase tracking-[0.2em] text-royalGreen mb-2 font-semibold">Blessings & Wishes</label>
-                        <textarea rows="3" placeholder="Share your warm wishes for Geetha & Pavan..." class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition"></textarea>
+                        <textarea name="wishes" rows="3" placeholder="Share your warm wishes for Geetha & Pavan..." class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition"></textarea>
                     </div>
 
                     <button type="submit" class="w-full bg-templeGold hover:bg-royalGreen text-white font-semibold py-4 rounded-2xl text-xs uppercase tracking-[0.25em] shadow-lg transition duration-300">
