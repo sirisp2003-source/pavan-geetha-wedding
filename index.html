@@ -42,14 +42,14 @@
             border: 1px solid rgba(212, 175, 55, 0.4);
             box-shadow: 0 25px 50px -12px rgba(19, 42, 29, 0.12);
         }
-        .telugu-badge-top {
+        .telugu-badge {
             background: rgba(19, 42, 29, 0.85);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(212, 175, 55, 0.6);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
         }
         .bottom-vignette {
-            background: linear-gradient(to top, rgba(19, 42, 29, 0.95) 0%, rgba(19, 42, 29, 0.6) 50%, rgba(19, 42, 29, 0) 100%);
+            background: linear-gradient(to top, rgba(19, 42, 29, 0.95) 0%, rgba(19, 42, 29, 0.65) 55%, rgba(19, 42, 29, 0) 100%);
         }
         .gold-border-frame {
             border: 1px solid rgba(212, 175, 55, 0.5);
@@ -173,27 +173,26 @@
     <!-- Main Content Wrapper -->
     <main class="relative">
 
-        <!-- Hero Section (Option 2: Minimalist Top & Bottom Margins) -->
-        <section id="home" class="relative min-h-screen flex flex-col justify-between pt-28 pb-12 overflow-hidden">
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-screen flex flex-col justify-end pt-28 pb-12 overflow-hidden">
             <div class="absolute inset-3 sm:inset-6 gold-border-frame z-10 pointer-events-none rounded-xl hidden sm:block"></div>
             
             <!-- Full Unobscured Portrait Background -->
             <img src="SR508126.jpg" alt="Geetha & Pavan" class="absolute inset-0 w-full h-full object-cover object-center scale-105">
             
-            <!-- Gradient Overlay confined strictly to the bottom margin -->
-            <div class="absolute inset-x-0 bottom-0 h-2/3 bottom-vignette pointer-events-none"></div>
+            <!-- Soft Vignette at bottom margin -->
+            <div class="absolute inset-x-0 bottom-0 h-3/4 bottom-vignette pointer-events-none"></div>
 
-            <!-- Top Margin: Highlighting Telugu Blessing Badge -->
-            <div class="relative z-20 text-center px-4 pt-4">
-                <div class="inline-block px-6 py-2.5 rounded-full telugu-badge-top">
-                    <p class="font-telugu text-templeGold text-base sm:text-xl font-semibold tracking-widest drop-shadow-md">
-                        శ్రీరస్తు · శుభమస్తు · अविఘ్నమస్తు
+            <!-- Bottom Content Group -->
+            <div class="relative z-20 max-w-3xl mx-auto text-center text-white space-y-4 px-4">
+                
+                <!-- Telugu Blessing Badge -->
+                <div class="inline-block px-6 py-2 rounded-full telugu-badge mb-1">
+                    <p class="font-telugu text-templeGold text-base sm:text-lg font-semibold tracking-widest drop-shadow-md">
+                        శ్రీరస్తు · శుభమస్తు · అవిఘ్నమస్తు
                     </p>
                 </div>
-            </div>
 
-            <!-- Bottom Margin: Couple Names, Welcome Message & Date -->
-            <div class="relative z-20 max-w-3xl mx-auto text-center text-white space-y-4 px-4">
                 <h1 class="font-editorial text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none drop-shadow-2xl text-silkCream">
                     Geetha <span class="font-light italic text-templeGold">&</span> Pavan
                 </h1>
