@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Noto+Serif+Telugu:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Noto+Serif+Telugu:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -21,6 +21,7 @@
                         royalGreen: '#132A1D',
                         deepEmerald: '#1B3828',
                         templeGold: '#D4AF37',
+                        brightGold: '#FFD700',
                         antiqueGold: '#C5A059',
                         silkCream: '#FDFCF7',
                         warmSand: '#F4EFEA',
@@ -35,34 +36,60 @@
         }
     </script>
     <style>
+        /* Royal Glassmorphism Cards */
         .royal-card {
-            background: rgba(253, 252, 247, 0.95);
+            background: rgba(253, 252, 247, 0.96);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 25px 50px -12px rgba(19, 42, 29, 0.12);
+            border: 1.5px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 0 25px 50px -12px rgba(19, 42, 29, 0.15);
         }
-        .hero-text-overlay {
-            background: linear-gradient(to top, rgba(19, 42, 29, 0.85) 0%, rgba(19, 42, 29, 0.45) 60%, rgba(0, 0, 0, 0.2) 100%);
-        }
-        .telugu-badge {
-            background: rgba(19, 42, 29, 0.75);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(212, 175, 55, 0.6);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
+
+        /* Gold Border Frame */
         .gold-border-frame {
-            border: 1px solid rgba(212, 175, 55, 0.5);
+            border: 1.5px solid rgba(212, 175, 55, 0.6);
             position: relative;
         }
         .gold-border-frame::before {
             content: '';
             position: absolute;
-            inset: 6px;
-            border: 1px solid rgba(212, 175, 55, 0.25);
+            inset: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
             pointer-events: none;
+            border-radius: inherit;
         }
-        /* Falling Jasmine / Gold Petals */
+
+        /* Majestic Gold Metallic Gradient Text */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF099 0%, #F5D061 30%, #E6B800 60%, #FFF5C2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Temple Arch / Sacred Crest Frame Header */
+        .temple-blessing-frame {
+            background: rgba(19, 42, 29, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1.5px solid rgba(212, 175, 55, 0.85);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.2);
+            position: relative;
+        }
+
+        /* Corner Decorative Motifs for Blessing Box */
+        .corner-motif {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-color: #D4AF37;
+        }
+        .corner-tl { top: -2px; left: -2px; border-top: 3px solid #D4AF37; border-left: 3px solid #D4AF37; }
+        .corner-tr { top: -2px; right: -2px; border-top: 3px solid #D4AF37; border-right: 3px solid #D4AF37; }
+        .corner-bl { bottom: -2px; left: -2px; border-bottom: 3px solid #D4AF37; border-left: 3px solid #D4AF37; }
+        .corner-br { bottom: -2px; right: -2px; border-bottom: 3px solid #D4AF37; border-right: 3px solid #D4AF37; }
+
+        /* Floating Jasmine / Gold Petals Animation */
         @keyframes fall {
             0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
             20% { opacity: 0.9; }
@@ -70,16 +97,17 @@
         }
         .petal {
             position: fixed;
-            background: rgba(212, 175, 55, 0.3);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.6), rgba(212, 175, 55, 0.3));
             border-radius: 150% 0 150% 0;
             pointer-events: none;
             z-index: 30;
             animation: fall linear infinite;
         }
-        /* Traditional Music Instruments Glowing Halo */
+
+        /* Traditional Instrument Halo Effect */
         @keyframes aura-pulse {
             0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); transform: scale(1); }
-            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8); transform: scale(1.05); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8); transform: scale(1.04); }
         }
         .instrument-halo {
             animation: aura-pulse 3.5s infinite ease-in-out;
@@ -118,42 +146,42 @@
             if (!isPlaying) {
                 player.playVideo();
                 btnText.innerText = "Music: Playing 🎶";
-                btnIcon.className = "fa-solid fa-pause animate-pulse";
+                btnIcon.className = "fa-solid fa-pause animate-pulse text-brightGold";
                 isPlaying = true;
             } else {
                 player.pauseVideo();
                 btnText.innerText = "Play Music 🎶";
-                btnIcon.className = "fa-solid fa-music";
+                btnIcon.className = "fa-solid fa-music text-templeGold";
                 isPlaying = false;
             }
         }
 
-        // Load YouTube Iframe API
+        // Load YouTube Iframe API asynchronously
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     </script>
 
-    <!-- Floating Play Music Button -->
+    <!-- Floating Play Music Button (In-Page Audio Toggle) -->
     <div class="fixed bottom-6 right-6 z-50">
         <button onclick="togglePlayMusic()" 
-           class="flex items-center gap-2.5 bg-royalGreen text-templeGold px-5 py-3 rounded-full shadow-2xl border border-templeGold/50 text-xs font-semibold hover:bg-templeGold hover:text-white transition duration-300">
-            <i id="music-icon" class="fa-solid fa-music"></i>
-            <span id="music-text" class="uppercase tracking-widest text-[10px]">Play Music 🎶</span>
+           class="flex items-center gap-3 bg-royalGreen/90 backdrop-blur-md text-templeGold px-5 py-3 rounded-full shadow-2xl border border-templeGold/60 text-xs font-semibold hover:bg-templeGold hover:text-white transition duration-300">
+            <i id="music-icon" class="fa-solid fa-music text-templeGold"></i>
+            <span id="music-text" class="uppercase tracking-widest text-[10px] font-bold">Play Music 🎶</span>
         </button>
     </div>
 
-    <!-- Floating Jasmine/Gold Petals -->
+    <!-- Floating Gold/Jasmine Petals -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-30">
-        <div class="petal" style="left: 12%; width: 12px; height: 16px; animation-duration: 14s; animation-delay: 0s;"></div>
-        <div class="petal" style="left: 35%; width: 9px; height: 13px; animation-duration: 16s; animation-delay: 3s;"></div>
-        <div class="petal" style="left: 68%; width: 13px; height: 17px; animation-duration: 11s; animation-delay: 1s;"></div>
-        <div class="petal" style="left: 88%; width: 10px; height: 14px; animation-duration: 13s; animation-delay: 4s;"></div>
+        <div class="petal" style="left: 10%; width: 12px; height: 16px; animation-duration: 14s; animation-delay: 0s;"></div>
+        <div class="petal" style="left: 32%; width: 9px; height: 13px; animation-duration: 16s; animation-delay: 3s;"></div>
+        <div class="petal" style="left: 65%; width: 13px; height: 17px; animation-duration: 11s; animation-delay: 1s;"></div>
+        <div class="petal" style="left: 85%; width: 10px; height: 14px; animation-duration: 13s; animation-delay: 4s;"></div>
     </div>
 
     <!-- Navigation Bar -->
-    <header class="fixed top-0 left-0 right-0 z-40 px-6 sm:px-12 py-5 bg-silkCream/90 backdrop-blur-md border-b border-templeGold/20 transition-all">
+    <header class="fixed top-0 left-0 right-0 z-40 px-6 sm:px-12 py-5 bg-silkCream/95 backdrop-blur-md border-b border-templeGold/30 transition-all shadow-sm">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <a href="#home" class="font-editorial italic text-2xl sm:text-3xl font-bold tracking-wide text-royalGreen">
                 Geetha <span class="font-sans font-light text-templeGold text-base">&</span> Pavan
@@ -171,51 +199,75 @@
     </header>
 
     <!-- Main Content Wrapper -->
-    <main class="relative">
+    <main class="relative pt-24">
 
-        <!-- Hero Section with Improved Text Contrast & Highlighting -->
-        <section id="home" class="relative min-h-screen flex items-end sm:items-center justify-center p-4 sm:p-8 pb-16 sm:pb-8 pt-28 overflow-hidden">
-            <div class="absolute inset-3 sm:inset-6 gold-border-frame z-10 pointer-events-none rounded-xl hidden sm:block"></div>
+        <!-- Unblocked Portrait & Hero Invitation Section -->
+        <section id="home" class="max-w-4xl mx-auto px-4 py-8">
             
-            <img src="SR508126.jpg" alt="Geetha & Pavan" class="absolute inset-0 w-full h-full object-cover object-center scale-105">
-            <div class="absolute inset-0 hero-text-overlay"></div>
+            <!-- Sacred Telugu Blessing Header Card -->
+            <div class="text-center mb-6">
+                <div class="temple-blessing-frame rounded-2xl px-6 py-4 sm:px-10 sm:py-5 inline-block border border-templeGold/80 shadow-2xl">
+                    <div class="corner-motif corner-tl"></div>
+                    <div class="corner-motif corner-tr"></div>
+                    <div class="corner-motif corner-bl"></div>
+                    <div class="corner-motif corner-br"></div>
 
-            <div class="relative z-20 max-w-3xl mx-auto text-center text-white space-y-6 px-4">
-                
-                <!-- Highlighted Telugu Blessing Badge -->
-                <div class="inline-block px-6 py-2.5 rounded-full telugu-badge">
-                    <p class="font-telugu text-templeGold text-base sm:text-xl font-semibold tracking-widest drop-shadow">
+                    <div class="flex items-center justify-center gap-3 mb-1.5">
+                        <span class="w-8 h-px bg-gradient-to-r from-transparent to-templeGold"></span>
+                        <i class="fa-solid fa-om text-brightGold text-sm"></i>
+                        <span class="w-8 h-px bg-gradient-to-l from-transparent to-templeGold"></span>
+                    </div>
+
+                    <h2 class="font-telugu text-xl sm:text-2xl md:text-3xl font-bold tracking-wider gold-gradient-text leading-snug">
                         శ్రీరస్తు · శుభమస్తు · అవిఘ్నమస్తు
-                    </p>
+                    </h2>
                 </div>
+            </div>
 
-                <h1 class="font-editorial text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none drop-shadow-2xl text-silkCream">
+            <!-- Completely Clear, Unblocked Photo Frame -->
+            <div class="royal-card p-3 sm:p-4 rounded-3xl gold-border-frame shadow-2xl overflow-hidden mb-8">
+                <div class="rounded-2xl overflow-hidden relative group">
+                    <img src="SR508126.jpg" alt="Geetha & Pavan Portrait" class="w-full h-[65vh] sm:h-[75vh] object-cover object-top rounded-2xl">
+                </div>
+            </div>
+
+            <!-- Invitation Details Banner (Below Photo) -->
+            <div class="bg-royalGreen text-white rounded-3xl p-8 sm:p-12 text-center space-y-6 gold-border-frame shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-12 -top-12 w-40 h-40 bg-templeGold/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="absolute -left-12 -bottom-12 w-40 h-40 bg-templeGold/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                <span class="text-xs uppercase tracking-[0.3em] text-templeGold font-bold">Together with their families</span>
+
+                <h1 class="font-editorial text-5xl sm:text-7xl font-bold tracking-tight leading-none text-silkCream">
                     Geetha <span class="font-light italic text-templeGold">&</span> Pavan
                 </h1>
 
-                <div class="w-28 h-px bg-templeGold mx-auto opacity-90"></div>
+                <div class="w-24 h-px bg-gradient-to-r from-transparent via-templeGold to-transparent mx-auto opacity-80"></div>
 
-                <p class="font-editorial italic text-base sm:text-2xl text-warmSand max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+                <p class="font-editorial italic text-xl sm:text-2xl text-warmSand max-w-2xl mx-auto leading-relaxed font-light">
                     We are overjoyed to celebrate our wedding with all of you. Welcome to our special celebration—we can’t wait to create unforgettable memories together!
                 </p>
 
                 <div class="pt-2">
-                    <span class="inline-block bg-royalGreen/80 backdrop-blur-md text-silkCream text-xs uppercase tracking-[0.3em] px-8 py-3 rounded-full border border-templeGold/50 shadow-xl">
+                    <span class="inline-block bg-deepEmerald text-templeGold text-xs uppercase tracking-[0.25em] px-8 py-3 rounded-full border border-templeGold/40 font-semibold shadow-inner">
                         November 20, 2026 · Tampa, Florida
                     </span>
                 </div>
             </div>
+
         </section>
 
         <!-- Sumuhurtham Section -->
-        <section id="muhurtham" class="py-20 max-w-3xl mx-auto px-4">
+        <section id="muhurtham" class="py-16 max-w-3xl mx-auto px-4">
             <div class="text-center space-y-3 mb-12">
-                <span class="font-telugu text-templeGold text-xl tracking-widest">ముహూర్తం</span>
+                <span class="font-telugu text-templeGold text-xl tracking-widest font-semibold">ముహూర్తం</span>
                 <h2 class="font-editorial text-4xl sm:text-5xl text-royalGreen font-semibold">Sumuhurtham</h2>
                 <div class="w-16 h-px bg-templeGold mx-auto"></div>
             </div>
 
             <div class="royal-card rounded-3xl p-8 sm:p-14 text-center space-y-8 gold-border-frame">
+                
+                <!-- South Indian Musical Emblem -->
                 <div class="flex justify-center">
                     <div class="px-6 py-4 rounded-full bg-warmSand border border-templeGold/40 flex items-center gap-4 instrument-halo">
                         <span class="text-xs uppercase tracking-widest text-templeGold font-bold">🎺 Nadaswaram</span>
@@ -248,7 +300,7 @@
         <!-- Venue Section -->
         <section id="venue" class="py-12 max-w-3xl mx-auto px-4">
             <div class="text-center space-y-3 mb-12">
-                <span class="font-telugu text-templeGold text-xl tracking-widest">వేదిక</span>
+                <span class="font-telugu text-templeGold text-xl tracking-widest font-semibold">వేదిక</span>
                 <h2 class="font-editorial text-4xl sm:text-5xl text-royalGreen font-semibold">The Venue</h2>
                 <div class="w-16 h-px bg-templeGold mx-auto"></div>
             </div>
@@ -256,7 +308,7 @@
             <div class="royal-card rounded-3xl p-8 sm:p-14 text-center space-y-8 gold-border-frame">
                 <div class="space-y-2">
                     <h3 class="font-editorial text-3xl sm:text-4xl text-royalGreen font-bold">Hindu Temple of Florida</h3>
-                    <p class="text-xs uppercase tracking-[0.25em] text-templeGold font-medium">Tampa, Florida</p>
+                    <p class="text-xs uppercase tracking-[0.25em] text-templeGold font-semibold">Tampa, Florida</p>
                 </div>
 
                 <p class="text-sm text-gray-700 max-w-lg mx-auto leading-relaxed font-light">
@@ -278,7 +330,7 @@
         </section>
 
         <!-- RSVP Section -->
-        <section id="rsvp" class="py-28 max-w-2xl mx-auto px-4">
+        <section id="rsvp" class="py-24 max-w-2xl mx-auto px-4">
             <div class="royal-card rounded-3xl p-8 sm:p-14 shadow-xl gold-border-frame">
                 <div class="text-center space-y-3 mb-10">
                     <h2 class="font-editorial text-4xl sm:text-5xl text-royalGreen font-semibold">RSVP</h2>
@@ -336,3 +388,9 @@
 
 </body>
 </html>
+```
+
+### What Changed:
+1. **Full-view Portrait**: `SR508126.jpg` is now displayed in a framed container with zero dark green overlays over your faces/outfits.
+2. **Telugu Blessing Plaque**: Positioned nicely above the photo inside a temple-style gold frame.
+3. **Invitation Details Card**: Placed neatly *below* your photo in a rich royal green card with gold accents.
