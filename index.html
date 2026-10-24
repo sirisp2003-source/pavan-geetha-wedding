@@ -280,7 +280,7 @@
             </div>
         </section>
 
-        <!-- RSVP Section with Formspree Integration -->
+        <!-- RSVP Section with Unlimited Free FormSubmit Integration -->
         <section id="rsvp" class="py-24 max-w-2xl mx-auto px-4">
             <div class="royal-card rounded-3xl p-8 sm:p-14 shadow-xl gold-border-frame">
                 <div class="text-center space-y-3 mb-10">
@@ -289,27 +289,33 @@
                     <div class="w-16 h-px bg-templeGold mx-auto"></div>
                 </div>
 
-                <form action="https://formspree.io/f/xwlvdnov" method="POST" class="space-y-6">
+                <form action="https://formsubmit.co/geethas2430@gmail.com" method="POST" class="space-y-6">
+                    
+                    <!-- Email Subject Line -->
+                    <input type="hidden" name="_subject" value="New Wedding RSVP - Geetha & Pavan">
+                    <!-- Disable Captcha for simple guest experience -->
+                    <input type="hidden" name="_captcha" value="false">
+
                     <div>
                         <label class="block text-[11px] uppercase tracking-[0.2em] text-royalGreen mb-2 font-semibold">Full Name *</label>
-                        <input type="text" name="name" required placeholder="Enter your full name" class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition">
+                        <input type="text" name="Name" required placeholder="Enter your full name" class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition">
                     </div>
 
                     <div>
                         <label class="block text-[11px] uppercase tracking-[0.2em] text-royalGreen mb-2 font-semibold">Will You Be Attending? *</label>
                         <div class="grid grid-cols-2 gap-4">
                             <label class="flex items-center justify-center p-3.5 rounded-2xl border border-templeGold/40 text-xs font-medium cursor-pointer hover:border-templeGold hover:bg-white bg-white/90 transition">
-                                <input type="radio" name="attending" value="Joyfully Accepts" required class="accent-templeGold mr-2"> Joyfully Accepts
+                                <input type="radio" name="Attending Status" value="Joyfully Accepts" required class="accent-templeGold mr-2"> Joyfully Accepts
                             </label>
                             <label class="flex items-center justify-center p-3.5 rounded-2xl border border-templeGold/40 text-xs font-medium cursor-pointer hover:border-templeGold hover:bg-white bg-white/90 transition">
-                                <input type="radio" name="attending" value="Regretfully Declines" class="accent-templeGold mr-2"> Regretfully Declines
+                                <input type="radio" name="Attending Status" value="Regretfully Declines" class="accent-templeGold mr-2"> Regretfully Declines
                             </label>
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-[11px] uppercase tracking-[0.2em] text-royalGreen mb-2 font-semibold">Number of Guests</label>
-                        <select name="guests" class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition">
+                        <select name="Number of Guests" class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition">
                             <option value="1 Guest">1 Guest</option>
                             <option value="2 Guests (+1)">2 Guests (+1)</option>
                             <option value="3+ Family">3+ Family</option>
@@ -318,7 +324,7 @@
 
                     <div>
                         <label class="block text-[11px] uppercase tracking-[0.2em] text-royalGreen mb-2 font-semibold">Blessings & Wishes</label>
-                        <textarea name="wishes" rows="3" placeholder="Share your warm wishes for Geetha & Pavan..." class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition"></textarea>
+                        <textarea name="Blessings & Wishes" rows="3" placeholder="Share your warm wishes for Geetha & Pavan..." class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition"></textarea>
                     </div>
 
                     <button type="submit" class="w-full bg-templeGold hover:bg-royalGreen text-white font-semibold py-4 rounded-2xl text-xs uppercase tracking-[0.25em] shadow-lg transition duration-300">
