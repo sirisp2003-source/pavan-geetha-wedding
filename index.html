@@ -293,6 +293,8 @@
                     
                     <!-- Email Subject Line -->
                     <input type="hidden" name="_subject" value="New Wedding RSVP - Geetha & Pavan">
+                    <!-- Instant Redirect back to site -->
+                    <input type="hidden" name="_next" value="https://geethawedspavan.com">
                     <!-- Disable Captcha for simple guest experience -->
                     <input type="hidden" name="_captcha" value="false">
 
@@ -314,12 +316,8 @@
                     </div>
 
                     <div>
-                        <label class="block text-[11px] uppercase tracking-[0.2em] text-royalGreen mb-2 font-semibold">Number of Guests</label>
-                        <select name="Number of Guests" class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition">
-                            <option value="1 Guest">1 Guest</option>
-                            <option value="2 Guests (+1)">2 Guests (+1)</option>
-                            <option value="3+ Family">3+ Family</option>
-                        </select>
+                        <label class="block text-[11px] uppercase tracking-[0.2em] text-royalGreen mb-2 font-semibold">Total Number of Guests Attending *</label>
+                        <input type="number" name="Number of Guests" min="1" max="15" value="1" required placeholder="e.g. 4" class="w-full px-5 py-3.5 rounded-2xl border border-templeGold/40 bg-white/90 text-xs focus:outline-none focus:border-templeGold transition">
                     </div>
 
                     <div>
